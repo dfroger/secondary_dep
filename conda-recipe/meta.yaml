@@ -1,0 +1,19 @@
+package:
+  name: secondary_dep
+  version: 0.1.0
+
+source:
+  path: ..
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - gcc ==4.8.5
+    - cmake
+  run:
+    - libgcc
+
+about:
+  home: https://github.com/dfroger/secondary_dep
