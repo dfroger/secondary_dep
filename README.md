@@ -12,6 +12,8 @@ We will need `cmake`:
 
     $ conda install cmake
 
+## Using gcc from the system
+
 We use `gcc` from the system:
 
     $ which gcc
@@ -26,6 +28,8 @@ Link with the library foo (provided by `secondary_dep`) (**success**)
     ...
     /usr/bin/cc     CMakeFiles/main.dir/main.c.o  -o main -rdynamic /media/david/data/miniconda/envs/sec/lib/libfoo.so -Wl,-rpath,/media/david/data/miniconda/envs/sec/lib 
     ...
+
+## Using gcc from conda
 
 Install gcc from conda:
 
@@ -43,3 +47,17 @@ Link with the library foo (provided by `secondary_dep` (**error**):
     /media/david/data/miniconda/envs/sec/lib/gcc/x86_64-unknown-linux-gnu/4.8.5/../../../libfoo.so: undefined reference to `bar'
     collect2: error: ld returned 1 exit status
     ...
+
+## Using gcc from conda in another environment
+
+Remove gcc from the `sec` (current) environment:
+
+    $ conda remove gcc
+
+Install `gcc` in another environment:
+
+    $ conda create -n gcc -c asmeurer gcc
+    $ GCC_ENV_DIR=$(conda info -e | grep gcc | tr -s ' ' | cut -d' ' -f2)
+    $ export PATH=$GCC_ENV_DIR/bin:$PATH
+
+This works as with `/usr/bin/gcc`
