@@ -5,7 +5,7 @@ The following steps are executed on Ubuntu 14.04 .
 
 Install the `secondary_dep` package:
 
-    $ conda install -c dfroger -n sec secondary_dep
+    $ conda create -c dfroger -n sec secondary_dep
     $ source activate sec
 
 We will need `cmake`:
@@ -17,7 +17,7 @@ We use `gcc` from the system:
     $ which gcc
     /usr/bin/gcc
 
-Link with the library foo (provided by `secondary_dep`) (sucess)
+Link with the library foo (provided by `secondary_dep`) (**success**)
 
     $ cd example
     $ mkdir build; cd build
@@ -31,7 +31,7 @@ Install gcc from conda:
 
     $ conda install -c asmeurer gcc
 
-Link with the library foo (provided by `secondary_dep` (error):
+Link with the library foo (provided by `secondary_dep` (**error**):
 
     $ cd example
     $ rm -rf build; mkdir build; cd build
